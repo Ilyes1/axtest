@@ -8,8 +8,9 @@ function App() {
   const [news, setNews] = useState([])
 
   useEffect(() => {
-    axios.get('https://newsapi.org/v2/everything?q=*&apiKey=2150c751ae4b4ce497da11d3c3456293').then(data => {
-      setNews(data.data.articles)
+    axios.get('https://jsonplaceholder.typicode.com/todos').then(data => {
+      console.log(data.data)
+      setNews(data.data)
     })
   }, [])
 
@@ -21,16 +22,16 @@ function App() {
           {
             news.map((item) => {
               return (
-                <div className="col-lg-4 col-md-6 mb-4">
+                <div className="col-lg-4 col-md-6 mb-4" key={item.id}>
                   <div className="card" style={{ width: "100%" }}>
-                    <img src={item.urlToImage} className="card-img-top" alt="..." />
+                    <img src="https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/db1a8a0b606830c3c9ca110ce77b44a1.png" className="card-img-top" alt="..." />
                     <div className="card-body">
-                      <h5 className="card-title">{item.title}</h5>
+                      <h5 className="card-title">{item.id}</h5>
                       <p className="card-text">
-                        {item.description}
+                        {item.title}
                       </p>
-                      <a href={item.url} className="btn btn-primary" target="blank">
-                        {item.source.name}
+                      <a href="#" className="btn btn-primary" target="blank">
+                        View more
                       </a>
                     </div>
                   </div>
